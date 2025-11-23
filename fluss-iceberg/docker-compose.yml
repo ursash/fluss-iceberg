@@ -65,7 +65,7 @@ services:
   #end
   #begin Flink cluster
   jobmanager:
-    image: apache/fluss-quickstart-flink:1.20-0.8.0-incubating
+    image: fluss/quickstart-flink-iceberg:1.20-0.8.0
     container_name: jobmanager
     ports:
       - "8083:8081"
@@ -80,7 +80,7 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
   taskmanager:
-    image: apache/fluss-quickstart-flink:1.20-0.8.0-incubating
+    image: fluss/quickstart-flink-iceberg:1.20-0.8.0
     container_name: taskmanager
     depends_on:
       - jobmanager
@@ -100,7 +100,7 @@ services:
   #end
   # Flink Lake Tiering Service
   flink-tiering:
-    image: apache/fluss-quickstart-flink:1.20-0.8.0-incubating
+    image: fluss/quickstart-flink-iceberg:1.20-0.8.0
     depends_on:
       - jobmanager
       - coordinator-server
